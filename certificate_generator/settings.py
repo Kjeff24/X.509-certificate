@@ -25,8 +25,12 @@ SECRET_KEY = 'django-insecure-!@ocs11dbk49y+0vxwz+&#yv!jn_f!+)^yk+9(_19jx_ithzj3
 # SECURITY WARNING: don't run with debug turned on in production!
 DEBUG = True
 
-ALLOWED_HOSTS = []
-
+ALLOWED_HOSTS = ['*']
+# Settings for x509 certificate
+SECURE_PROXY_SSL_HEADER = ('HTTP_X_FORWARDED_PROTO', 'https')
+SESSION_COOKIE_SECURE = True
+CSRF_COOKIE_SECURE = True
+SECURE_SSL_REDIRECT = True
 
 # Application definition
 
@@ -38,6 +42,7 @@ INSTALLED_APPS = [
     'django.contrib.messages',
     'django.contrib.staticfiles',
     'certificates.apps.CertificatesConfig',
+    'sslserver',
 ]
 
 MIDDLEWARE = [
